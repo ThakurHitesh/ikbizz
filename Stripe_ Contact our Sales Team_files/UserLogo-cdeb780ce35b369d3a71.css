@@ -1,0 +1,1 @@
+.UserLogo{--userLogoMaxWidth:160px;display:block}@media (max-width:899px){.UserLogo{max-width:var(--userLogoMaxWidth)}}.theme--White .UserLogo.variant--Flat{--userLogoColor:#b2bcc7}.theme--Light .UserLogo.variant--Flat{--userLogoColor:#aab4c1}.theme--Dark .UserLogo.variant--Flat{--userLogoColor:#fff}.UserLogo.variant--Flat{--userLogoColorAlt:var(--backgroundColor)}

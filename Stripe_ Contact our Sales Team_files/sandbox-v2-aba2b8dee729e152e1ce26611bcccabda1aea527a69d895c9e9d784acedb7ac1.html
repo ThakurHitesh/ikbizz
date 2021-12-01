@@ -1,0 +1,51 @@
+
+<!-- saved from url=(0305)https://b.stripecdn.com/site-srv/assets/files/sandbox-v2-aba2b8dee729e152e1ce26611bcccabda1aea527a69d895c9e9d784acedb7ac1.html?sandboxId=54a392b0-dbc8-4013-b6ee-de1c18747aea&munchkinId=072-MDK-283&url=%2Fin%2Fcontact%2Fsales&referrer=https%3A%2F%2Fwww.impactplus.com%2Fblog%2Fbest-contact-us-page-examples -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>
+// this frame has a different origin to its parent
+// IETF RFC-6265 now requires that cookies set in this context
+// set the samesite attribute to none
+(function() {
+  // document.cookie = {str} -> document.cookie = {transformCookie(str)}
+  try {
+    var orig = Object.getOwnPropertyDescriptor(Document.prototype, 'cookie');
+    if (orig && orig.get && orig.set) {
+      Object.defineProperty(document, 'cookie', {
+        get: function() { return orig.get.apply(this, arguments) },
+        set: function(str) { orig.set.apply(this, [transformCookie(str)]) },
+      });
+    }
+  } catch (err) { warn('failed to shim document.cookie', err) }
+
+  function transformCookie(str) {
+    info({in: str});
+    // clear out existing samesite setter(s)
+    str = str.replace(/samesite=\S+/ig, '');
+    // samesite requires that secure is also set
+    str +='; samesite=none; secure';
+    info({out: str});
+    return str;
+  }
+
+  function info() { if (logEnabled()) console.info.apply(console, arguments) }
+  function warn() { if (logEnabled()) console.warn.apply(console, arguments) }
+  function logEnabled() { return localStorage.enableCookieShimLogger }
+})();
+</script>
+
+<!-- exports: Munchkin  -->
+<script src="./munchkin-debug.js"></script>
+
+<script>
+  var munchkinId = location.search.match(/(?:^|\?|&)munchkinId=([A-Z0-9]{3}-[A-Z0-9]{3}-[A-Z0-9]{3})(?:&|#|$)/)
+  munchkinId = munchkinId ? decodeURIComponent(munchkinId[1]) : '455-YYK-877';
+  Munchkin.init(munchkinId);
+
+  var sandboxId = location.search.match(/(?:^|\?|&)sandboxId=([-A-Za-z0-9]+)(?:&|#|$)/);
+  sandboxId = sandboxId && sandboxId[1];
+  var munchkinCookie = document.cookie.split('; ').find(nvp => nvp.indexOf('_mkto_trk') === 0);
+  window.parent.postMessage({
+    sandboxId: sandboxId,
+    munchkinCookie: munchkinCookie,
+  }, '*');
+</script>
+</head><body></body></html>

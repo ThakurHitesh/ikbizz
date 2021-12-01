@@ -1,0 +1,1 @@
+.SiteDevelopersNav__bodyLayout{display:inline-grid;grid:auto/repeat(2,1fr);gap:var(--siteMenuSpacing) var(--siteMenuSpacing)}.SiteDevelopersNav__header{grid-area:auto/span 2}.SiteDevelopersNav__footerLayout{display:inline-grid;grid:auto/repeat(2,1fr);-moz-column-gap:var(--siteMenuSpacing);column-gap:var(--siteMenuSpacing)}

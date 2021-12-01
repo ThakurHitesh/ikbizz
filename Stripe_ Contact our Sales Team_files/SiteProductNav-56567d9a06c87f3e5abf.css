@@ -1,0 +1,1 @@
+.SiteProductNav__layout{--columnCount:2;display:inline-grid;grid:auto/repeat(var(--columnCount),1fr);gap:calc(var(--siteMenuSpacing)*1.5) var(--siteMenuSpacing)}@media (min-width:1200px){.SiteProductNav__layout{--columnCount:4}}

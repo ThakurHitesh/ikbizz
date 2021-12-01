@@ -1,0 +1,1 @@
+.SiteMobileMenu{--siteMenuMargin:var(--columnPaddingNormal);position:absolute;top:0;left:0;width:100%;padding:var(--siteMenuMargin);z-index:1}.SiteMobileMenu__card{position:relative}.SiteMobileMenu__closeButton{position:absolute;top:8px;right:8px;border:none;outline:none;background:none}.SiteMobileMenu__footer{display:flex;justify-content:center}
