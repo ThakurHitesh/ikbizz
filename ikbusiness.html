@@ -213,9 +213,7 @@
   <div class="SiteHeader__container">
     <div class="SiteHeader__navContainer">
       <h1 class="SiteHeader__logo">
-        <a href="https://stripe.com/in" class="SiteHeader__logoLink" data-js-controller="AnalyticsButton" data-analytics-category="Navigation" data-analytics-action="Clicked" data-analytics-label="Stripe Logo">
-            <img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/buisdyzs4qih0mkknqqw" width="70px" height="70px">
-        </a>
+        <img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/buisdyzs4qih0mkknqqw" width="70px" height="70px">
       </h1>
 
         <nav class="SiteHeader__menuNav">
@@ -2882,31 +2880,31 @@
   <div class="container-lg">
     <div class="form-column">
       <div class="form-container">
-        <form action="" method="post" novalidate="" data-analytics-category="Forms" data-analytics-action="Submit" data-analytics-label="Contact Sales">
+        <form novalidate="" data-analytics-category="Forms" data-analytics-action="Submit" data-analytics-label="Contact Sales" id="myForm">
           <input type="hidden" name="csrf-token" value="1">
           <fieldset>
             <input type="hidden" value="" name="analytics_event_id">
                           <div class="form-row text firstname">
                 <label class="firstname" for="firstname">First name</label>
-                <input id="firstname" name="firstname" type="text" placeholder="John" required="">
+                <input id="firstname" name="first_name" type="text" placeholder="John" required="">
               </div>
 
               <div class="form-row text lastname">
                 <label class="lastname" for="lastname">Last name</label>
-                <input id="lastname" name="lastname" type="text" placeholder="Smith" required="">
+                <input id="lastname" name="last_name" type="text" placeholder="Smith" required="">
               </div>
 
             <div class="form-row text email">
               <label class="email" for="email">Work email</label>
-              <input id="email" name="email" type="email" placeholder="john.smith@example.com" required="">
+              <input id="email" name="work_email" type="email" placeholder="john.smith@example.com" required="">
             </div>
             <div class="form-row text phone">
               <label class="phone" for="phone">Work phone</label>
-              <input id="phone" name="phone" type="phone" placeholder="+5 (555) 555-5555" required="">
+              <input id="phone" name="phone_number" type="phone" placeholder="+5 (555) 555-5555" required="">
             </div>
             <div class="form-row text website">
               <label class="website" for="website">Company website</label>
-              <input id="website" name="website" type="text" placeholder="example.com" required="">
+              <input id="website" name="company_name" type="text" placeholder="example.com" required="">
             </div>
             <div class="form-row select company-size">
               <label class="company-size" for="company-size">Company size</label>
@@ -3183,14 +3181,14 @@
                 How many people are you planning to train
               </label>
               <div class="select-wrapper">
-                <select id="volume" name="volume" required="">
+                <select id="volume" name="studnet_limit" required="">
                   <option selected="" disabled="" value="">Select a range</option>
 
-                    <option value="{&quot;index&quot;:0,&quot;total&quot;:5,&quot;text&quot;:&quot;Less than ₹50,000&quot;,&quot;lower_bound&quot;:0}">Less than 10</option>
-                    <option value="{&quot;index&quot;:1,&quot;total&quot;:5,&quot;text&quot;:&quot;₹50,000 to ₹150,000&quot;,&quot;lower_bound&quot;:5000000}">10 to 20</option>
-                    <option value="{&quot;index&quot;:2,&quot;total&quot;:5,&quot;text&quot;:&quot;₹150,000 to ₹1,000,000&quot;,&quot;lower_bound&quot;:15000000}">20 to 35</option>
-                    <option value="{&quot;index&quot;:3,&quot;total&quot;:5,&quot;text&quot;:&quot;₹1,000,000 to ₹6,500,000&quot;,&quot;lower_bound&quot;:100000000}">35 to 60</option>
-                    <option value="{&quot;index&quot;:4,&quot;total&quot;:5,&quot;text&quot;:&quot;More than ₹6,500,000&quot;,&quot;lower_bound&quot;:650000000}">More than 60</option>
+                    <option value="0-10">Less than 10</option>
+                    <option value="">10-20</option>
+                    <option value="20-35">20 to 35</option>
+                    <option value="35-60">35 to 60</option>
+                    <option value="60-999">More than 60</option>
                 </select>
               </div>
             </div>
@@ -3318,7 +3316,7 @@
 </div>
           <h1 class="success-headline">Thank you!</h1>
           <h2 class="success-subhead with-email">We’ll get back to you as soon as possible <span class="email-portion">at <span class="submitted-email">justinsippel@gmail.com</span></span></h2>
-          <a class="common-Link common-Link--arrow" href="https://stripe.com/blog">Read the latest updates from the Stripe team</a>
+          <a class="common-Link common-Link--arrow" href="">Read the latest updates from the IK team</a>
         </div>
         <hr class="divider">
         <div class="phone-number-container">
@@ -3344,7 +3342,21 @@
 
     </div>
 
+<script>
+    const thisForm = document.getElementById('myForm');
+    thisForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const formData = new FormData(thisForm).entries()
+    const response = await fetch('http:127.0.0.1:8000/api/v1/business/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(formData))
+    });
 
+    const result = await response.json();
+    console.log(result)
+});
+</script>
 
 
     <script type="application/json" id="site-feature-flags">
