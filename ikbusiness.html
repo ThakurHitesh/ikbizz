@@ -183,6 +183,25 @@
   <script defer="" src="./Stripe_ Contact our Sales Team_files/index-64a4b9e066ec532194b6.min.js"></script>
 
 
+    <style>
+        @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+
+.info-msg,
+.success-msg,
+.warning-msg,
+.error-msg {
+  margin: 10px 0;
+  padding: 20px;
+    font-size: medium;
+    visibility: hidden;
+  border-radius: 3px 3px 3px 3px;
+}
+.success-msg {
+  color: #270;
+  background-color: #DFF2BF;
+}
+    </style>
+
 
 
     <meta content="1" name="csrf-token">
@@ -2911,10 +2930,10 @@
               <div class="select-wrapper">
                 <select id="company-size" name="company_size" required="">
                   <option selected="" disabled="" value="">Select a range of employees</option>
-                    <option value="1-99">1-99</option>
-                    <option value="100-999">100-999</option>
-                    <option value="1000-4999">1000-4999</option>
-                    <option value="5000+">5000+</option>
+                    <option value="99">1-99</option>
+                    <option value="999">100-999</option>
+                    <option value="4999">1000-4999</option>
+                    <option value="5000">5000+</option>
                 </select>
               </div>
             </div>
@@ -3184,11 +3203,11 @@
                 <select id="volume" name="studnet_limit" required="">
                   <option selected="" disabled="" value="">Select a range</option>
 
-                    <option value="0-10">Less than 10</option>
-                    <option value="">10-20</option>
-                    <option value="20-35">20 to 35</option>
-                    <option value="35-60">35 to 60</option>
-                    <option value="60-999">More than 60</option>
+                    <option value="10">Less than 10</option>
+                    <option value="20">10-20</option>
+                    <option value="35">20 to 35</option>
+                    <option value="60">35 to 60</option>
+                    <option value="100">More than 60</option>
                 </select>
               </div>
             </div>
@@ -3197,34 +3216,6 @@
               <textarea name="message" id="message" required="" placeholder="Tell us more about your project, needs and timeline."></textarea>
             </div>
           </fieldset>
-          <fieldset class="Helm-ContactForm__sourceAttribution">
-  <input type="hidden" name="FF_UTM_Medium_Last_Click__c" class="Helm-Input Helm-Input__hidden">
-
-  <input type="hidden" name="FF_UTM_Source_Last_Click__c" class="Helm-Input Helm-Input__hidden">
-
-  <input type="hidden" name="FF_UTM_Campaign_Last_Click__c" class="Helm-Input Helm-Input__hidden">
-
-  <input type="hidden" name="FF_UTM_Content_Last_Click__c" class="Helm-Input Helm-Input__hidden">
-
-  <input type="hidden" name="FF_UTM_Term_Last_Click__c" class="Helm-Input Helm-Input__hidden">
-
-  <input type="hidden" name="FF_UTM_Medium_First_Click__c" class="Helm-Input Helm-Input__hidden">
-
-  <input type="hidden" name="FF_UTM_Source_First_Click__c" class="Helm-Input Helm-Input__hidden">
-
-  <input type="hidden" name="FF_UTM_Campaign_First_Click__c" class="Helm-Input Helm-Input__hidden">
-
-  <input type="hidden" name="FF_UTM_Content_First_Click__c" class="Helm-Input Helm-Input__hidden">
-
-  <input type="hidden" name="FF_UTM_Term_First_Click__c" class="Helm-Input Helm-Input__hidden">
-
-  <input type="hidden" name="FF_Conversion_Page__c" class="Helm-Input Helm-Input__hidden">
-
-  <input type="hidden" name="FF_Conversion_Date__c" class="Helm-Input Helm-Input__hidden">
-
-  <input type="hidden" name="Referrer_URL__c" class="Helm-Input Helm-Input__hidden">
-
-</fieldset>
 
           <div class="submit-row">
             <div class="error">
@@ -3239,6 +3230,12 @@
             <input type="submit" class="submit-button common-Button common-Button--default" value="Contact Sales">
           </div>
         </form>
+
+<div class="success-msg" id="alertsuccess">
+  <i class="fa fa-check"></i>
+  Data posted successfully.
+</div>
+
       </div>
     </div>
     <div class="secondary-column">
@@ -3347,7 +3344,7 @@
     thisForm.addEventListener('submit', async function (e) {
     e.preventDefault();
     const formData = new FormData(thisForm).entries()
-    const response = await fetch('http:127.0.0.1:8000/api/v1/business/', {
+    const response = await fetch('http://127.0.0.1:8000/api/v1/business/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(Object.fromEntries(formData))
@@ -3355,6 +3352,8 @@
 
     const result = await response.json();
     console.log(result)
+        let elem = document.getElementById('alertsuccess');
+        elem.style.visibility = visible;
 });
 </script>
 
